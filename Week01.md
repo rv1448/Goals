@@ -1,4 +1,4 @@
-##KEY SUBNET FACTS
+## KEY SUBNET FACTS
 
 __Subnet 10.0.0.1/24:__
 
@@ -165,3 +165,33 @@ __Company 4__  4.0.0.0 ----->|   Only 4.X.X.X here
 			Copy 255 in Network Broadcast Address
 
 ## Classless Addressing vs Classfull Addressing	  
+> Ignore the classes in addressing { Prefix(p) + Host(H) = 32 bits}
+> {Network(N) + Subnet(s) + Host(H) = 32} Size= 8,16,24
+
+``` CLASSFULL-ADDRESSING
+NETWORK + SUBNET + HOST
+SUBNET =2 power s
+HOST = 2 power h -2 
+```
+
+```Example 
+IP: 172.16.0.0 
+MASK: 255.255.255.0
+
+Rules:
+
+Network Octet     + Subnet Octet + Host Octet
+N = 16                S = 8			H = 8
+11111111 11111111   11111111        11111111
+
+N : Subnetting Class B Network 172.16.0.0,so N = 16
+H : Binary Mask Ends with 8 Binary 0s, so H = 8 
+S : Number so that N + S + H, so S = 8         
+```
+
+
+``` Example-Class-A/15
+IP  : 10.0.0.0
+Mask: 255.254.0.0
+
+```
