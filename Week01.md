@@ -189,9 +189,64 @@ H : Binary Mask Ends with 8 Binary 0s, so H = 8
 S : Number so that N + S + H, so S = 8         
 ```
 
+```ClassB with /22 
+ADDRESS: 172.16.0.0
+Mask   : 255.255.252.0
 
-``` Example-Class-A/15
-IP  : 10.0.0.0
-Mask: 255.254.0.0
+Addtional mask 252 apart from Class B 
+Calculate mask 256- 252 = 4 
+Third octet will be multiple of 4 starting from 0 upto 255 
+```
+
+```ClassB/20
+ADDRESS:172.16.0.0/20
+Mask: 255.255.240.0
+
+Additional mask 240 apart from class B
+Caliculate mask 256-240 = 16
+Third octet must be multiple of 16 starting from 0 to 255
+
+subnetid: 172.16.0.0
+id1		: 172.16.16.0	
+id2		: 172.16.32.0
+id3		: 172.16.48.0
+```
+
+```ClassC/29
+ADDRESS: 192.168.1.0
+MASK: 255.255.255.248
+
+Additional mask 248 part of 4th octet
+Calculate magic number 256 - 248 = 8 
+
+subnetid: 192.168.1.0
+id1:  192.168.1.8
+id1:  192.168.1.16
+id1:  192.168.1.24
 
 ```
+
+
+```ClassA/10
+ADDRESS: 10.0.0.1
+Mask:  255.192.0.0
+
+Additional mask as part of 2nd octet 
+Calculate magic number 256 - 192 = 64
+```
+
+##Comparing Mask Chocies for ClassA 
+- Second octet is the subnet Octet
+- Third and Fourth is the Host bit Octets
+
+DDN Mask   	|   PrefixLength 	|	NetworkBits |	SubnetBits 	|	#Subnet | 256 - MagicNum    |
+-------------------------------------------------------------------------------------------------
+255.0.0.0	|	/8				|	8			|	0			|	0		|		0			|
+255.128.0.0	|	/9				|	8			|	1			|	2		|		128			|
+255.192.0.0	|	/10				|	8			|	2			|	4		|		64			|
+255.224.0.0	|	/11				|	8			|	3			|	8		|		32			|
+255.240.0.0	|	/12				|	8			|	4			|	16		|		16			|
+255.248.0.0	|	/13				|	8			|	5			|	32		|		8			|
+255.252.0.0	|	/14				|	8			|	6			|	64		|		4			|
+255.254.0.0	|	/15				|	8			|	7			|	128		|		2			|
+255.255.0.0	|	/16				|	8			|	8			|	256		|		1			|
