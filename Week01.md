@@ -37,7 +37,7 @@ __Subnet Broadcast Address__
 	- Numerically Highest Number
 	- Binary: All host Bits = 1
 
-##SUBNET FACTS /16 and /24 
+## SUBNET FACTS /16 and /24 
 
 ```
 Example/24: 10.1.7.3 , 255.255.255.0
@@ -129,7 +129,7 @@ Magic Number = 256 - 254 = 2
 
 
 
-##IPV4 NETWORK
+## IPV4 NETWORK
 
 >> A predictable set of consective numbers
 - Netwoek ID 
@@ -235,7 +235,7 @@ Additional mask as part of 2nd octet
 Calculate magic number 256 - 192 = 64
 ```
 
-##Comparing Mask Chocies for ClassA 
+## Comparing Mask Chocies for ClassA 
 - Second octet is the subnet Octet
 - Third and Fourth is the Host bit Octets
 
