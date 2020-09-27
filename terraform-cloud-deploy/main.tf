@@ -8,3 +8,16 @@ resource "aws_s3_bucket" "b"{
         name = "week1"
     }
 }
+
+
+module "module_vpc" {
+    source = "./modules/vpc_connectivity"
+    aws_vpc_cidr = var.aws_vpc_cidr
+    aws_private_subnet1 = var.aws_private_subnet1
+    aws_public_subnet2 = var.aws_public_subnet2
+    aws_private_subnet3 = var.aws_private_subnet3 
+    aws_public_subnet4 = var.aws_public_subnet4 
+    }
+
+
+    ##modules/vpc_connectivity
