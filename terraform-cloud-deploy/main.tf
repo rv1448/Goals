@@ -9,6 +9,9 @@ resource "aws_s3_bucket" "b"{
     }
 }
 
+resource "aws_s3_bucket" "tf-remote-state" {
+  bucket = "terraform-remotestate-rv1448"
+}
 
 module "module_vpc" {
     source = "./modules/vpc_connectivity"
