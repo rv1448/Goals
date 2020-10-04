@@ -115,3 +115,43 @@ resource "aws_route_table_association" "private_subnet_3_association"{
     route_table_id = aws_route_table.private_route_table.id
     subnet_id = aws_subnet.pvsn_3.id
 }
+
+resource "aws_eip" "elastic_ip"{
+    vpc = true
+    associate_with_private_ip = var.eip
+
+    tags = {
+        Name="Production-EIP"
+    }
+}
+
+
+resource "aws_nat_gateway" "nat_gateway" {
+    allocation_id = aws_eip.elastic_ip.id
+    subnet_id = aws_subnet.pbsn_1.id
+
+    tags ={
+        Name="Production-EIP"
+    }
+}
+
+resource "aws_route" "nat_gateway_router"{
+    route_table_id = aws_route_table.public_route_table.id
+    nat_gateway_id = aws_nat_gateway.nat_gateway.id
+    destination_cidr_block ="0.0.0.0/0"
+}
+
+
+resource  "aws_internet_gateway" "internet_gateway" {
+    vpc_id = aws_vpc.vpc_design.id
+    tags = {
+        Name="production-IGW"
+    }
+}
+
+
+resource "aws_route" "igw_route" {
+    route_table_id = aws_route_table.public_route_table.id
+    gateway_id = aws_internet_gateway.internet_gateway.id
+    destination_cidr_block ="0.0.0.0/0"
+}
