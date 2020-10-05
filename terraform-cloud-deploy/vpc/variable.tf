@@ -25,6 +25,10 @@ variable "private_subnet_3" {
     default ="10.0.160.0/19"
 }
 
+variable "eip" {
+    default="10.0.64.0/19"  
+}
+
 
 # 10      .0       .0       .0  
 # 11111111.11111111.11111111.11111111
